@@ -4,4 +4,4 @@
 
 
 ## Features used and topics covered  in labs:
-* Course2Lab1 covers dplyr::sample_n function and rep_sample_n function in Course's statsr package. Also uses <strong><em>shiny</em></strong> package.
+* Course2Lab1 covers dplyr::sample_n function and rep_sample_n function in Course's statsr package. Also uses <strong><em>shiny</em></strong> package. Contains example of <strong><em>shinyApp(...)</em></strong> function call.
