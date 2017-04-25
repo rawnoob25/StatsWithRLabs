@@ -159,16 +159,38 @@ ggplot(nc%>%filter(!is.na(habit)),aes(x=habit,y=weight))+geom_violin()+labs(titl
 
 ggplot(nc%>%filter(!is.na(habit)),aes(x=weight))+geom_histogram()+facet_wrap(~habit)
 
-ncOnlySmokersNonsmokers<-nc%>%filter(!is.na(habit))
+ncSmokers<-nc%>%filter(habit=="smoker")
+ncNonsmokers<-nc%>%filter(habit=="nonsmoker")
 
 par(mfrow=c(1,2))
 
+qqnorm(ncSmokers$weight)
+qqline(ncSmokers$weight)
 
-with(ncOnlySmokersNonsmokers,tapply(weight,habit,function(x){
-  qqnorm(weight); qqline(weight);
-}))
+qqnorm(ncNonsmokers$weight)
+qqline(ncNonsmokers$weight)
+
 ```
+
+
 From the violin plots, histograms and npp plots, it seems as though both subsamples are quite left-skewed. It doesn't seem as though each of these subsamples (and consequently subpopulations- since we're using the subsamples to approximate the subpopulations) can be modeled by a normal distribution.
+
+Now just for the heck of it let's see if we can make a normal probability plot of weights for each level of habit, but let's try to make it a line plot. i.e. we'd like to connect the dots with lines.
+
+But in order for the plot to be connected the correct way, the data points within each plot must be ordered by weight.  
+
+```{r}
+par(mfrow=c(1,2))
+
+ncSmokers<-arrange(ncSmokers,weight)
+ncNonsmokers<-arrange(ncNonsmokers,weight)
+
+qqnorm(ncSmokers$weight,type="l")
+qqline(ncSmokers$weight)
+
+qqnorm(ncNonsmokers$weight,type="l")
+qqline(ncNonsmokers$weight)
+```
 
 
 </div>
