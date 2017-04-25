@@ -15,3 +15,4 @@
     
 * Course2Lab3 covers:
     * how to make normal probability plot using qqnorm and qqline functions. This superimposes the line for the npp plot on top of the data (vals vs theoretical quantiles).
+    * Hypothesis testing and confidence intervals (specific t-tests and t-intervals) for means and differences between means. These use the inference function from the statsr package.
